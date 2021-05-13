@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div class="toolbar">
+        <button class="tool" data-command="bold">
+            <i class="fas fa-bold"></i>
+        </button>
+        <button class="tool" data-command="italic">
+            <i class="fas fa-italic"></i>
+        </button>
+        <button class="tool" data-command="insertUnOrderedList">
+            <i class="fas fa-list-ul"></i>
+        </button>
+        <label for="file-upload" class="option">
+            <input id="file-upload" type="file" class="file"/>
+            Open JSON file
+        </label>
+        <button class="option remove">Clear</button>
+        <button class="option save">Save</button>
+        <p class="fileInfo"></p>
+    </div>
+
+    <div class="editor" contenteditable="true"></div>
+
+
+    <script src="https://kit.fontawesome.com/e07040cfe3.js" crossorigin="anonymous"></script>
+    <script src="../js/index.js"></script>
+
+</body>
+
+</html>

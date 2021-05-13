@@ -1,0 +1,17 @@
+{
+  "name": "texteditor",
+  "version": "1.0.0",
+  "description": "simple text editor with saving and opening files in JSON format",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
