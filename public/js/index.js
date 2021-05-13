@@ -46,7 +46,6 @@ const saveFile = async (e) => {
 const openFile = () => {
   if (uploadFileInput.files.length > 0) {
     const reader = new FileReader();
-    console.log();
     const fileName = uploadFileInput.files[0].name;
     fileInfo.textContent = `Opened file: ${fileName}`;
     reader.addEventListener("load", function () {
