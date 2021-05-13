@@ -13,7 +13,7 @@ const formatText = (command, button) => {
   document.execCommand(command, false, null);
 };
 
-const saveFile = (e) => {
+const saveFile = async (e) => {
   e.preventDefault();
   const fileName = window.prompt("Filename: ", "document");
   if (fileName) {
@@ -31,7 +31,7 @@ const saveFile = (e) => {
       body: JSON.stringify(data),
     };
 
-    fetch("/saving", options).then((response) => {
+    await fetch("/saving", options).then((response) => {
       response.json();
       if (response.status < 400) {
         alert("File successfully written!");
@@ -47,7 +47,8 @@ const openFile = () => {
   if (uploadFileInput.files.length > 0) {
     const reader = new FileReader();
     console.log();
-    fileInfo.textContent = `Opened file: ${uploadFileInput.files[0].name}`;
+    const fileName = uploadFileInput.files[0].name;
+    fileInfo.textContent = `Opened file: ${fileName}`;
     reader.addEventListener("load", function () {
       const result = JSON.parse(reader.result);
       label.classList.add("disabled");
@@ -59,12 +60,12 @@ const openFile = () => {
   }
 };
 const checkStyles = () => {
-  const isBold = document.queryCommandState("Bold");
+  const isBold = document.queryCommandState("bold");
   const isItalic = document.queryCommandState("italic");
   const isList = document.queryCommandState("insertUnOrderedList");
   document.designMode = "on";
   for (let button of toolBtns) {
-    let command = button.dataset["command"];
+    const command = button.dataset["command"];
     if (isBold && isItalic && command != "insertUnOrderedList") {
       button.classList.add("active");
     } else if (isBold && command == "bold") {
@@ -77,8 +78,9 @@ const checkStyles = () => {
       button.classList.remove("active");
     }
     if (editor.innerHTML == "") {
+      console.log("cleaning editor");
       button.classList.remove("active");
-      document.execCommand("removeFormat", false, null);
+      document.execCommand("removeFormat", false, "");
     }
   }
 
@@ -87,9 +89,9 @@ const checkStyles = () => {
 
 const clear = () => {
   uploadFileInput.value = "";
-  uploadFileInput.disabled = false;
   editor.innerHTML = "";
   fileInfo.textContent = "";
+  uploadFileInput.disabled = false;
   label.classList.remove("disabled");
   for (let button of toolBtns) {
     button.classList.remove("active");
@@ -97,10 +99,9 @@ const clear = () => {
 };
 
 for (let button of toolBtns) {
-  let command = button.dataset["command"];
+  const command = button.dataset["command"];
   button.addEventListener("click", () => formatText(command, button));
 }
-
 removeBtn.addEventListener("click", clear);
 saveBtn.addEventListener("click", saveFile);
 uploadFileInput.addEventListener("change", openFile);
