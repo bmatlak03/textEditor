@@ -19,7 +19,11 @@ app.post("/saving", (req, res) => {
   const data = req.body;
   const fileName = data.fileName;
   delete data.fileName;
-  const path = `./documents/${fileName}.json`;
+  const dirname = "./documents";
+  const path = `${dirname}/${fileName}.json`;
+  if (!fs.existsSync(dirname)) {
+    fs.mkdirSync(dirname);
+  }
   fs.writeFile(path, JSON.stringify(data), (err) => {
     if (err) throw err;
     console.log("The file was saved!");
