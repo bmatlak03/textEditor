@@ -78,7 +78,6 @@ const checkStyles = () => {
       button.classList.remove("active");
     }
     if (editor.innerHTML == "") {
-      console.log("cleaning editor");
       button.classList.remove("active");
       document.execCommand("removeFormat", false, null);
     }
