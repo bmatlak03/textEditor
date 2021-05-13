@@ -1,5 +1,5 @@
 # textEditor
-simple text editor with opening and saving files to ".json" format created with JavaScript and node.js
+simple text editor with opening and saving files to ".json" format created with JavaScript, Express and NodeJS
 
 
 To run this project you have to install NodeJS. You can download it from https://nodejs.org/en/
