@@ -44,9 +44,10 @@ const saveFile = async (e) => {
   }
 };
 const openFile = () => {
-  if (uploadFileInput.files.length > 0) {
+  const uploadedFile = uploadFileInput.files;
+  if (uploadedFile.length > 0) {
     const reader = new FileReader();
-    const fileName = uploadFileInput.files[0].name;
+    const fileName = uploadedFile[0].name;
     fileInfo.textContent = `Opened file: ${fileName}`;
     reader.addEventListener("load", function () {
       const result = JSON.parse(reader.result);
@@ -55,7 +56,7 @@ const openFile = () => {
       uploadFileInput.disabled = true;
     });
 
-    reader.readAsText(uploadFileInput.files[0]);
+    reader.readAsText(uploadedFile[0]);
   }
 };
 const checkStyles = () => {
