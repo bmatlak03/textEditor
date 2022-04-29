@@ -4,6 +4,16 @@ simple text editor with opening and saving files to ".json" format created with 
 
 To run this project you have to install [NodeJS](https://nodejs.org/en/)
 
+<details>
+ <summary><b>What I have learned by making this project:</b></summary>
+<br>
+ 
+What I have learned:
+ - How to open and save files via ExpressJS
+ - Consolidate knowledge of vanilla Javascrippt
+ - How to create basic server via ExpressJS
+</details>
+
 ## Instalation
 
 If you have already installed node:
